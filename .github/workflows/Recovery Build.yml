@@ -49,7 +49,7 @@ jobs:
     permissions:
       contents: write
     steps:
- 
+    
     # You might want to Checkout your repo first, but not mandatory
     - name: Check Out
       uses: actions/checkout@v4
@@ -68,8 +68,8 @@ jobs:
     - name: Prepare the build environment
       run: |
         sudo apt update && sudo apt upgrade -y
+        sudo apt install -yq linux-modules-extra-$(uname -r) || true
         DEBIAN_FRONTEND=noninteractive sudo apt install -yq \
-            linux-modules-extra-$(uname -r) \
             git python3 tar aria2
         git clone https://gitlab.com/OrangeFox/misc/scripts
         cd scripts
